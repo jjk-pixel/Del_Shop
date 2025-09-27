@@ -1,0 +1,64 @@
+{% extends base_template %}
+{% block title %}Résultats de recherche{% endblock %}
+
+{% block content %}
+<div class="px-4 sm:px-6 lg:px-12 py-8 
+     {% if base_template == 'base_sombre.html' %}bg-gray-900 text-gray-200{% else %}bg-gray-50 text-gray-900{% endif %}">
+
+    <!-- Titre -->
+    <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 
+        {% if base_template == 'base_sombre.html' %}text-gray-100{% endif %}">
+        Résultats pour "{{ query }}"
+    </h1>
+
+    {% if produits %}
+        <!-- Grille responsive -->
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for produit in produits %}
+                <div class="rounded-xl p-4 shadow-lg transition hover:scale-105 hover:shadow-xl 
+                            {% if base_template == 'base_sombre.html' %}
+                                bg-gray-800 border border-gray-700
+                            {% else %}
+                                bg-white border border-gray-200
+                            {% endif %}">
+                    
+                    <!-- Lien vers le produit -->
+                    <a href="{% url 'detail_produit' produit.id %}" class="block">
+                        {% if produit.images.first %}
+                            <div class="relative w-full h-48 sm:h-56 lg:h-64 overflow-hidden rounded-lg">
+                                <img src="{{ produit.images.first.image.url }}" 
+                                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
+                            </div>
+                        {% else %}
+                            <div class="w-full h-48 sm:h-56 lg:h-64 bg-gray-300 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                                <span class="text-gray-600 dark:text-gray-300 text-sm">Pas d'image</span>
+                            </div>
+                        {% endif %}
+
+                        <!-- Nom produit -->
+                        <h2 class="mt-4 text-lg sm:text-xl font-bold truncate 
+                                   {% if base_template == 'base_sombre.html' %}text-gray-100{% endif %}">
+                            {{ produit.nom }}
+                        </h2>
+
+                        <!-- Prix -->
+                        <p class="mt-1 text-sm sm:text-base font-medium 
+                                  {% if base_template == 'base_sombre.html' %}
+                                      text-gray-300
+                                  {% else %}
+                                      text-gray-700
+                                  {% endif %}">
+                            {{ produit.prix }} FCFA
+                        </p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="mt-6 text-center text-base sm:text-lg 
+                  {% if base_template == 'base_sombre.html' %}text-gray-400{% else %}text-gray-500{% endif %}">
+            Aucun produit trouvé.
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

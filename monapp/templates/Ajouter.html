@@ -1,0 +1,101 @@
+{% extends base_template %}
+{% load static %}
+{% block footer%}{% endblock %} 
+{% block title %}Ajouter un nouveau produit | Shopy Shoes{% endblock %}
+
+{% block content %}
+<div class="px-4 sm:px-6 lg:px-20 flex flex-1 justify-center py-5 
+     {% if base_template == 'base_sombre.html' %}bg-gray-900 text-gray-200{% else %}bg-white text-gray-900{% endif %}">
+  <div class="layout-content-container flex flex-col w-full max-w-md sm:max-w-lg lg:max-w-2xl py-5 flex-1">
+    
+    <!-- Titre -->
+    <div class="flex flex-wrap justify-between gap-3 p-4">
+      <p class="tracking-light text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight 
+         {% if base_template == 'base_sombre.html' %}text-gray-100{% else %}text-[#121416]{% endif %}">
+        Add New Shoe
+      </p>
+    </div>
+
+    <!-- Formulaire -->
+<!-- Formulaire -->
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <!-- Nom -->
+  <div class="flex flex-col gap-2 px-4 py-3">
+    <label>
+      <p class="text-base font-medium pb-1 {% if base_template == 'base_sombre.html' %}text-gray-200{% else %}text-[#121416]{% endif %}">
+        Name
+      </p>
+      <input name="nom" placeholder="Enter shoe name" required 
+             class="w-full rounded-xl border h-12 sm:h-14 px-3 
+             {% if base_template == 'base_sombre.html' %}bg-gray-800 text-gray-200 border-gray-600{% else %}bg-white text-gray-900 border-gray-300{% endif %}" />
+    </label>
+  </div>
+
+  <!-- Catégorie -->
+  <div class="px-4 py-3">
+    <p class="text-base font-medium pb-2 {% if base_template == 'base_sombre.html' %}text-gray-200{% else %}text-[#121416]{% endif %}">
+      Category
+    </p>
+    <select name="categorie" required
+            class="w-full rounded-xl border h-12 sm:h-14 px-3 
+            {% if base_template == 'base_sombre.html' %}bg-gray-800 text-gray-200 border-gray-600{% else %}bg-white text-gray-900 border-gray-300{% endif %}">
+      <option value="">-- Select a category --</option>
+      <option value="anime">Anime</option>
+      <option value="transparent">Transparent</option>
+      <option value="single">Single Color</option>
+      <option value="drawing">Drawing</option>
+    </select>
+  </div>
+
+  <!-- Upload images -->
+  <div class="flex flex-col p-4">
+    <div class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed px-4 sm:px-6 py-10 sm:py-14 
+         {% if base_template == 'base_sombre.html' %}border-gray-600 bg-gray-800{% else %}border-[#dde1e3] bg-[#f9fafb]{% endif %}">
+      
+      <button type="button" onclick="document.getElementById('photoInput').click()" 
+              class="rounded-xl px-4 h-10 text-sm font-bold 
+              {% if base_template == 'base_sombre.html' %}bg-gray-700 text-gray-200{% else %}bg-[#f1f2f4] text-[#121416]{% endif %}">
+        Upload Photos
+      </button>
+
+      <input type="file" id="photoInput" name="images" accept="image/*" multiple class="hidden" onchange="previewMultiplePhotos(event)" />
+
+      <div id="previewZone" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 w-full">
+        <!-- Preview des images -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton submit -->
+  <div class="flex px-4 py-3 justify-end">
+    <button type="submit" 
+            class="rounded-xl px-6 h-10 text-sm font-bold 
+            {% if base_template == 'base_sombre.html' %}bg-blue-600 text-white hover:bg-blue-700{% else %}bg-[#dce8f3] text-[#121416] hover:bg-blue-100{% endif %}">
+      Add
+    </button>
+  </div>
+</form>
+
+  </div>
+</div>
+
+<script>
+  function previewMultiplePhotos(event) {
+    const previewZone = document.getElementById("previewZone");
+    previewZone.innerHTML = "";
+    const files = event.target.files;
+    Array.from(files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.className = "w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-xl";
+        previewZone.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+</script>
+{% endblock %}

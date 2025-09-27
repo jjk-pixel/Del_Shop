@@ -1,0 +1,50 @@
+{% extends base_template %}
+{% load static %}
+
+{% block title %}Accueil | Shopy Shoes{% endblock %}
+
+{% block content %}
+
+<h2 class="flex justify-center text-lg sm:text-xl md:text-2xl font-bold mb-6 {% if base_template == 'base_sombre.html' %}text-gray-100{% endif %} text-center sm:text-left">
+  Catégories
+</h2>
+
+<div class="{% if base_template == 'base_sombre.html' %}bg-gray-900 text-gray-200{% else %}bg-gray-50 text-gray-900{% endif %} p-4 sm:p-6 md:p-8 rounded-lg">
+
+  <!-- Catégories Horizontales -->
+  <div class="flex justify-center gap-4 mb-8 flex-wrap">
+    {% for cat in categories %}
+      <a href="{% if active_categorie == cat.cat %}{% url 'liste_produits' %}{% else %}?categorie={{ cat.cat }}{% endif %}"
+         class="relative w-40 h-16 sm:w-48 sm:h-20 lg:w-56 lg:h-24 rounded-lg shadow overflow-hidden flex items-center justify-center text-sm sm:text-lg font-bold transition transform hover:scale-105
+                {% if active_categorie == cat.cat %}border-4 border-blue-500{% endif %}">
+        <img src="{% static cat.img %}" alt="{{ cat.label }}" class="absolute inset-0 w-full h-full object-cover opacity-85">
+        <span class="relative z-10 text-white drop-shadow-lg">{{ cat.label }}</span>
+      </a>
+    {% endfor %}
+  </div>
+  
+  <!-- Grille responsive Produits -->
+  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+    {% for produit in produits %}
+      <div class="relative rounded-lg p-3 sm:p-4 h-full shadow hover:shadow-lg transition-shadow duration-300
+                  {% if base_template == 'base_sombre.html' %}bg-gray-800 border border-gray-700{% else %}bg-white border{% endif %}">
+
+        <a href="{% url 'detail_produit' produit.id %}" class="block">
+          {% if produit.images.all %}
+            <img src="{{ produit.images.all.0.image.url }}" class="w-full h-40 sm:h-48 lg:h-56 object-cover rounded mb-3" />
+          {% else %}
+            <p class="text-sm {% if base_template == 'base_sombre.html' %}text-gray-400{% else %}text-gray-500{% endif %} text-center">
+              Aucune image
+            </p>
+          {% endif %}
+
+          <h2 class="text-sm sm:text-base font-bold truncate {% if base_template == 'base_sombre.html' %}text-gray-100{% endif %}">
+            {{ produit.nom }}
+          </h2>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

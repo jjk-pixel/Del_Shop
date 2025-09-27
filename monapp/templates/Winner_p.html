@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Del Shop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .bg-cover {
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <div class="relative w-full min-h-screen flex items-center justify-center bg-cover bg-no-repeat"
+     style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "Winner-img/fond.jpg" %}'); background-position: center; background-size: cover;">
+    
+        <div class="text-center text-white px-4">
+            <div class="relative px-4 flex flex-col items-center"> <!-- centré -->
+                <h1 class="text-7xl md:text-6xl font-extrabold text-white">Del Shop</h1>
+                <h3 class="text-lg md:text-xl">Protégez votre style, exprimez votre personnalité!</h3>
+                <button class="mt-6 flex items-center justify-center rounded-full h-14 px-8 bg-red-600 hover:bg-red-700 text-white text-lg md:text-xl font-bold transition-all duration-300" 
+                        onclick="window.location.href='{% url 'liste_produits' %}'">
+                    Découvrir
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
