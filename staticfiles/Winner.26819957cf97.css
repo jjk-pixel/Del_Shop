@@ -1,0 +1,249 @@
+body {
+    background: #f5f7fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.body{
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+    background-color: #f4f7fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;      /* centre horizontalement */
+    align-items: center;   
+}
+
+form {
+    max-width: 360px;
+    margin: 32px auto 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    padding: 32px 28px 24px 28px;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.goku{
+     text-align: left;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="tel"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    font-size: 15px;
+    background: #fafbfc;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: #4285f4;
+    outline: none;
+}
+
+a {
+    color: #4285f4;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px 0;
+    background: black;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background 0.2s;
+}
+
+input[type="submit"]:hover {
+    background: #2a63bf;
+}
+button[type="submit"]{
+     width: 100%;
+    padding: 10px 0;
+    background: black;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background 0.2s;   
+}
+button[type="submit"]:hover{
+    background: #2a63bf;
+}
+
+hr {
+    margin: 32px auto 16px auto;
+    border: none;
+    border-top: 1px solid #ececec;
+    width: 90%;
+}
+
+p[style*="text-align:center;"] {
+    margin: 16px 0 16px 0;
+    font-weight: 500;
+    color: #888;
+    font-size: 13px;
+}
+
+#google-signin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 18px auto 10px auto;
+    padding: 10px 0;
+    background: #fff;
+    color: #222;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(66,133,244,0.04);
+}
+
+#google-signin:hover {
+    border-color: #4285f4;
+    box-shadow: 0 2px 8px rgba(66,133,244,0.12);
+}
+
+#google-signin img {
+    margin-right: 8px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+/* ----------- PHONE FIELD FIX ----------- */
+.phone-field {
+    display: flex;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.phone-field select,
+.phone-field input[type="tel"] {
+    font-size: 15px;
+    height: 44px;
+    border: 1px solid #d6d6d6;
+    background: #fafbfc;
+    outline: none;
+    box-shadow: none;
+    padding: 0 12px;
+    margin: 0;
+    /* Pour forcer le rendu à l'identique */
+    box-sizing: border-box;
+}
+
+.phone-field select {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+    min-width: 110px;
+    max-width: 140px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: flex;
+    align-items: center;
+    /* Flèche custom (optionnel, pour uniformiser le look) */
+    background: #fafbfc url("data:image/svg+xml;utf8,<svg fill='gray' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z'/></svg>") no-repeat right 12px center/18px 18px;
+}
+
+.phone-field input[type="tel"] {
+    flex: 1 1 0%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+}
+
+.phone-field select:focus,
+.phone-field input[type="tel"]:focus {
+    border-color: #4285f4;
+    z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    form {
+        max-width: 98%;
+        padding: 16px 4vw;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    .phone-field select {
+        min-width: 80px;
+        max-width: 100px;
+    }
+}
+.img {
+  width: 150px;              
+  height: 150px;             
+  border-radius: 50%;        
+  object-fit: cover;        
+  border: 2px;
+  display: block;           
+  margin: 0 auto;            
+
+  transition: transform 0.3s ease;  /* Smooth zoom */
+}
+
+.img:hover {
+  transform: scale(1.2);     /* Zoom à 120% au survol */
+  cursor: zoom-in;           /* Change le curseur */
+}
+.a{
+  width: 150px;              /* Réduit la taille (tu peux ajuster) */
+  height: 150px;             /* Hauteur égale pour garder la forme */
+  border-radius: 50%;        /* Rend l'image parfaitement ronde */
+  object-fit: cover;         /* Centre l’image et la découpe proprement */
+  border: 2px;    /* (Optionnel) Bordure grise autour */
+  display: block;
+}
+
+

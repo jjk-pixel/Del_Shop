@@ -1,0 +1,13 @@
+/* styles.css */
+
+body {
+  background-color: white;
+  color: black;
+}
+
+.dark body {
+  background-color: #121212; /* Couleur de fond sombre */
+  color: white; /* Couleur de texte claire */
+}
+
+/* Ajoutez d'autres styles pour vos éléments ici */

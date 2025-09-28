@@ -122,8 +122,8 @@ def admin_required(user):
     return user.is_superuser
 
 
-@login_required(login_url='admin_login')
-@user_passes_test(admin_required,login_url='admin_login')
+@login_required(login_url='admin-login')
+@user_passes_test(admin_required,login_url='admin-login')
 def admin_produits(request):
     produits = Produit.objects.all()
     return render(request, 'admin_produits.html', {'produits': produits})
