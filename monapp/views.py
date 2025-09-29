@@ -10,7 +10,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def accueil(request):
-    return render(request, 'Winner_p.html')
+    return render(request, 'index.html')
 
 def liste_produits(request):
     categories = [
@@ -162,3 +162,4 @@ def admin_change_credentials(request):
 
     # ✅ très important : on renvoie bien `request`
     return render(request, 'change_credentials.html', {'user': user})
+
